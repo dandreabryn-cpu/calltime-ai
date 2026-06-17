@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #15171c;
+  --paper: #f7f5f0;
+  --paper-dim: #ece8df;
+  --brass: #c9a227;
+  --brass-dim: #a98a22;
+  --pine: #3a5a53;
+  --pine-bg: #e7eeec;
+  --brick: #8b3a3a;
+  --brick-bg: #f1e4e2;
+  --slate: #6b6f76;
+  --hairline: #d8d3c6;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Georgia", serif;
+  --font-body: -apple-system, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "Roboto Mono", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--brass);
+  color: var(--ink);
+}
+
+/* Focus visibility — keyboard users need this, especially on a tool used
+   under time pressure mid-call. */
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
