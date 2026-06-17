@@ -1,56 +1,216 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #15171c;
-  --paper: #f7f5f0;
-  --paper-dim: #ece8df;
-  --brass: #c9a227;
-  --brass-dim: #a98a22;
-  --pine: #3a5a53;
-  --pine-bg: #e7eeec;
-  --brick: #8b3a3a;
-  --brick-bg: #f1e4e2;
-  --slate: #6b6f76;
-  --hairline: #d8d3c6;
+    /* Core palette */
+  --ink: #0f1117;
+    --ink-soft: #2a2d35;
+    --paper: #f4f1eb;
+    --paper-dim: #e8e3d8;
+    --paper-card: #faf8f4;
+    --brass: #b8921f;
+    --brass-dim: #9a7a1a;
+    --brass-light: #f5ecd4;
+    --pine: #2e4a42;
+    --pine-bg: #dfeae7;
+    --brick: #7a3030;
+    --brick-bg: #f0e0df;
+    --slate: #5c6168;
+    --slate-light: #8a8f98;
+    --hairline: #d0c9b8;
+    --shadow-sm: 0 1px 3px rgba(15,17,23,0.08), 0 1px 2px rgba(15,17,23,0.04);
+    --shadow-md: 0 4px 12px rgba(15,17,23,0.10), 0 2px 4px rgba(15,17,23,0.06);
+    --shadow-lg: 0 8px 24px rgba(15,17,23,0.12), 0 4px 8px rgba(15,17,23,0.06);
+    --radius: 8px;
+    --radius-sm: 5px;
 
   --font-display: "Iowan Old Style", "Palatino Linotype", "Georgia", serif;
-  --font-body: -apple-system, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-mono: "SF Mono", "Roboto Mono", Consolas, monospace;
+    --font-body: -apple-system, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono: "SF Mono", "Roboto Mono", Consolas, monospace;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html, body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .font-display {
-  font-family: var(--font-display);
+    font-family: var(--font-display);
 }
 
 .font-mono {
-  font-family: var(--font-mono);
+    font-family: var(--font-mono);
+}
+
+/* Cards */
+.card {
+    background: var(--paper-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover:not(:disabled) {
+    background: var(--ink-soft);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+.btn-primary:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.btn-danger {
+    background: var(--brick);
+    color: var(--paper);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    box-shadow: var(--shadow-sm);
+}
+.btn-danger:hover {
+    filter: brightness(1.1);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-secondary:hover {
+    background: var(--paper-dim);
+    border-color: var(--slate-light);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Inputs & textareas */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    background: var(--paper-card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sm);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    padding: 0.55rem 0.75rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: inset 0 1px 2px rgba(15,17,23,0.04);
+    width: 100%;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--brass);
+    box-shadow: 0 0 0 3px var(--brass-light), inset 0 1px 2px rgba(15,17,23,0.04);
+}
+
+/* Label caps */
+.label-cap {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate);
+}
+
+/* Dividers */
+.divider {
+    border: none;
+    border-top: 1px solid var(--hairline);
+    margin: 0;
+}
+
+/* Status badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.badge-follow-up {
+    background: var(--brass-light);
+    color: var(--brass-dim);
+}
+.badge-pledged {
+    background: var(--pine-bg);
+    color: var(--pine);
+}
+.badge-declined {
+    background: var(--brick-bg);
+    color: var(--brick);
+}
+.badge-no-answer {
+    background: var(--paper-dim);
+    color: var(--slate);
 }
 
 ::selection {
-  background: var(--brass);
-  color: var(--ink);
+    background: var(--brass-light);
+    color: var(--ink);
 }
 
-/* Focus visibility — keyboard users need this, especially on a tool used
-   under time pressure mid-call. */
 :focus-visible {
-  outline: 2px solid var(--brass);
-  outline-offset: 2px;
+    outline: 2px solid var(--brass);
+    outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
+    * {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+    }
 }
